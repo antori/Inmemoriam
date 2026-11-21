@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f4ef">
+<link rel="icon" href="data:,">
 <title>In Memoriam — donne uccise in Italia dal 2014</title>
 <meta name="description" content="Schede delle donne uccise in Italia dal 2014 a oggi: nome, data, luogo, una breve storia e la fonte. A sostegno di In Memoriam – Manifesto Visivo di Matteo Anatrella e ANeMA Project.">
 <style>
@@ -29,7 +31,7 @@ input,select{width:100%;padding:9px 10px;border:1px solid #cfc7bb;border-radius:
 .bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
 button{font:14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;padding:9px 12px;border-radius:6px;border:1px solid #cfc7bb;background:var(--paper);color:var(--ink);cursor:pointer}
 button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:18px 0 8px}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:14px;padding:18px 0 8px}
 .card{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px}
 .card h3{font-size:1.15rem;margin:0;line-height:1.25}
 .meta{font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
@@ -48,7 +50,45 @@ table.years{border-collapse:collapse;font:14px/1.4 system-ui,-apple-system,"Sego
 table.years td,table.years th{padding:5px 14px 5px 0;border-bottom:1px solid var(--rule);text-align:left}
 footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:640px){.filters{position:static}header.top{padding-top:36px}}
+.toggle,.adv-close{display:none}
+.toggle .n{background:var(--accent);color:#fff;border-radius:999px;padding:3px 7px;font-size:12px}
+.toggle .n:empty{display:none}
+.totop{position:fixed;right:14px;bottom:16px;z-index:6;width:46px;height:46px;border-radius:50%;padding:0;font-size:20px;line-height:1;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.totop[hidden]{display:none}
+@media (max-width:640px){
+ .wrap{padding:0 14px}
+ header.top{padding:26px 0 16px}
+ .lede{font-size:1.02rem}
+ nav.links{gap:4px 16px;font-size:15px;margin-top:14px}
+ nav.links a{display:inline-block;padding:6px 0}
+ main{display:flex;flex-direction:column}
+ #schede{order:-1}
+ section{padding:18px 0}
+ .filters{position:sticky;top:0;padding:10px 0 8px}
+ .filters.open{max-height:88vh;overflow-y:auto;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+ .grid{grid-template-columns:1fr 1fr;gap:8px}
+ .f-name,.f-wide{grid-column:1/-1}
+ .f-name label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .adv{display:none}
+ .filters.open .adv{display:block}
+ .filters.open .adv-close{display:block;grid-column:1/-1;width:100%}
+ .toggle{display:inline-flex;align-items:center;gap:6px}
+ input,select,button{font-size:16px;min-height:44px}
+ input[type=date]{-webkit-appearance:none;appearance:none}
+ .bar{margin-top:8px;gap:8px;flex-wrap:nowrap}
+ .bar .ctrl{display:flex;gap:8px;align-items:center}
+ .filters:not(.open) #q-sort{display:none}
+ .filters.open .bar{flex-wrap:wrap}
+ .dsk{display:none}
+ #reset{display:none}
+ .filters.active #reset{display:inline-block}
+ .results{gap:10px;padding-top:12px}
+ .card{padding:14px 14px 12px}
+ .src{font-size:13.5px;line-height:1.5}
+ .copy{min-height:40px;padding:8px 14px;font-size:14px}
+ .more button{width:100%;min-height:48px}
+ table.years td,table.years th{padding-right:10px}
+}
 </style>
 </head>
 <body>
@@ -78,21 +118,23 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
   <div class="wrap">
    <h2 id="schede-h" class="sr">Schede</h2>
    <form id="f" class="grid" role="search" onsubmit="return false">
-    <div><label for="q-name">Nome</label><input id="q-name" type="search" placeholder="Nome o cognome" autocomplete="off"></div>
-    <div><label for="q-place">Luogo</label><input id="q-place" type="search" placeholder="Comune o sigla provincia" autocomplete="off"></div>
-    <div><label for="q-region">Regione</label><select id="q-region"><option value="">Tutte</option></select></div>
-    <div><label for="q-year">Anno</label><select id="q-year"><option value="">Tutti</option></select></div>
-    <div><label for="q-from">Dal</label><input id="q-from" type="date" min="2014-01-01"></div>
-    <div><label for="q-to">Al</label><input id="q-to" type="date"></div>
-    <div><label for="q-rel">Relazione con l'autore</label><select id="q-rel"><option value="">Tutte</option></select></div>
-    <div><label for="q-text">Nella storia</label><input id="q-text" type="search" placeholder="Parola nel testo" autocomplete="off"></div>
+    <div class="f-name"><label for="q-name">Nome</label><input id="q-name" type="search" placeholder="Cerca un nome" autocomplete="off" enterkeyhint="search"></div>
+    <div class="adv f-wide"><label for="q-place">Luogo</label><input id="q-place" type="search" placeholder="Comune o sigla provincia" autocomplete="off"></div>
+    <div class="adv"><label for="q-region">Regione</label><select id="q-region"><option value="">Tutte</option></select></div>
+    <div class="adv"><label for="q-year">Anno</label><select id="q-year"><option value="">Tutti</option></select></div>
+    <div class="adv"><label for="q-from">Dal</label><input id="q-from" type="date" min="2014-01-01"></div>
+    <div class="adv"><label for="q-to">Al</label><input id="q-to" type="date"></div>
+    <div class="adv f-wide"><label for="q-rel">Relazione con l'autore</label><select id="q-rel"><option value="">Tutte</option></select></div>
+    <div class="adv f-wide"><label for="q-text">Nella storia</label><input id="q-text" type="search" placeholder="Parola nel testo" autocomplete="off"></div>
+    <button type="button" id="close-adv" class="primary adv-close">Mostra le schede</button>
    </form>
    <div class="bar">
     <span id="count" aria-live="polite"></span>
-    <span>
+    <span class="ctrl">
+     <button type="button" id="toggle" class="toggle" aria-expanded="false" aria-controls="f">Filtri <span class="n" id="nact"></span></button>
      <label for="q-sort" class="sr">Ordina</label>
      <select id="q-sort" style="width:auto"><option value="desc">Più recenti prima</option><option value="asc">Meno recenti prima</option><option value="name">Per nome</option></select>
-     <button type="button" id="reset">Azzera filtri</button>
+     <button type="button" id="reset">Azzera<span class="dsk"> filtri</span></button>
     </span>
    </div>
   </div>
@@ -121,6 +163,8 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
 </section>
 </main>
 
+<button type="button" id="totop" class="totop" aria-label="Torna all'inizio delle schede" hidden>↑</button>
+
 <footer>
  <div class="wrap">In Memoriam · schede aggiornate al 22 novembre 2026 · i dati sono liberamente scaricabili in <a href="data/schede.csv">CSV</a> e <a href="data/schede.json">JSON</a>.</div>
 </footer>
@@ -146,8 +190,17 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
  function fill(sel, vals){ const el = $(sel); vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; el.appendChild(o); }); }
 
  const ids = ['q-name','q-place','q-region','q-year','q-from','q-to','q-rel','q-text','q-sort'];
- ids.forEach(id => { const el = document.getElementById(id); el.addEventListener(el.tagName === 'SELECT' || el.type === 'date' ? 'change' : 'input', () => { apply(); writeHash(); }); });
- $('#reset').addEventListener('click', () => { ids.forEach(id => { const el = document.getElementById(id); el.value = id === 'q-sort' ? 'desc' : ''; }); apply(); writeHash(); });
+ const filt = $('.filters'), sec = $('#schede');
+ const toResults = () => { if (window.scrollY > sec.offsetTop + 4) window.scrollTo({top: sec.offsetTop}); };
+ ids.forEach(id => { const el = document.getElementById(id); el.addEventListener(el.tagName === 'SELECT' || el.type === 'date' ? 'change' : 'input', () => { apply(); writeHash(); toResults(); }); });
+ $('#reset').addEventListener('click', () => { ids.forEach(id => { const el = document.getElementById(id); el.value = id === 'q-sort' ? 'desc' : ''; }); apply(); writeHash(); toResults(); });
+ const setOpen = o => { filt.classList.toggle('open', o); $('#toggle').setAttribute('aria-expanded', o); };
+ $('#toggle').addEventListener('click', () => setOpen(!filt.classList.contains('open')));
+ $('#close-adv').addEventListener('click', () => { setOpen(false); toResults(); });
+ document.addEventListener('keydown', e => { if (e.key === 'Escape' && filt.classList.contains('open')) setOpen(false); });
+ const top = $('#totop');
+ window.addEventListener('scroll', () => { top.hidden = window.scrollY < sec.offsetTop + 1400; }, {passive: true});
+ top.addEventListener('click', () => { setOpen(false); window.scrollTo({top: sec.offsetTop, behavior: 'smooth'}); });
  $('#more').addEventListener('click', () => render(false));
 
  function apply(){
@@ -158,7 +211,12 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
    (!from || (r.date && r.date >= from)) && (!to || (r.date && r.date <= to)));
   if (sort === 'name') view.sort((a,b) => a.name.localeCompare(b.name,'it'));
   else view.sort((a,b) => (sort === 'asc' ? 1 : -1) * ((a.date||'').localeCompare(b.date||'') || a.n - b.n));
-  $('#count').textContent = view.length === 1 ? '1 scheda' : view.length.toLocaleString('it-IT') + ' schede';
+  const cnt = view.length === 1 ? '1 scheda' : view.length.toLocaleString('it-IT') + ' schede';
+  $('#count').textContent = cnt;
+  const act = ['q-place','q-region','q-year','q-from','q-to','q-rel','q-text'].filter(id => document.getElementById(id).value).length;
+  $('#nact').textContent = act || '';
+  filt.classList.toggle('active', act > 0 || !!$('#q-name').value);
+  $('#close-adv').textContent = view.length ? 'Mostra ' + cnt : 'Nessuna scheda: modifica i filtri';
   render(true);
  }
 
