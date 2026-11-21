@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In Memoriam — donne uccise in Italia dal 2014</title>
+<meta name="description" content="Schede delle donne uccise in Italia dal 2014 a oggi: nome, data, luogo, una breve storia e la fonte. A sostegno di In Memoriam – Manifesto Visivo di Matteo Anatrella e ANeMA Project.">
+<style>
+:root{--bg:#f7f4ef;--paper:#fffdf9;--ink:#1f1d1b;--muted:#6b6660;--rule:#e2dbd1;--accent:#7a2e2e;--accent-soft:#f1e4e1;--focus:#2b5c8a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header.top{padding:56px 0 28px;border-bottom:1px solid var(--rule)}
+h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;margin:0 0 12px;font-weight:700;letter-spacing:-.01em}
+.lede{font-size:1.15rem;color:var(--muted);max-width:46rem;margin:0}
+nav.links{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 18px;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+section{padding:28px 0}
+h2{font-size:1.5rem;margin:0 0 10px}
+.project>*{max-width:46rem}
+.project p{margin:0 0 10px}
+.filters{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 0 12px;border-bottom:1px solid var(--rule)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+label{display:block;font:600 12px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+input,select{width:100%;padding:9px 10px;border:1px solid #cfc7bb;border-radius:6px;background:var(--paper);font:15px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
+button{font:14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;padding:9px 12px;border-radius:6px;border:1px solid #cfc7bb;background:var(--paper);color:var(--ink);cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding:18px 0 8px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.card h3{font-size:1.15rem;margin:0;line-height:1.25}
+.meta{font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
+.story{margin:2px 0 4px}
+.story.missing{color:var(--muted);font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--accent-soft);color:var(--accent);padding:5px 8px;border-radius:999px}
+.src{margin-top:auto;padding-top:8px;border-top:1px dashed var(--rule);font:12.5px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted);display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.src a{word-break:break-word}
+.copy{padding:5px 8px;font-size:12px;white-space:nowrap}
+.more{display:flex;justify-content:center;padding:10px 0 30px}
+.empty{padding:30px 0;color:var(--muted);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.method>*{max-width:50rem}
+.method li{margin-bottom:8px}
+table.years{border-collapse:collapse;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;margin:8px 0 16px}
+table.years td,table.years th{padding:5px 14px 5px 0;border-bottom:1px solid var(--rule);text-align:left}
+footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:640px){.filters{position:static}header.top{padding-top:36px}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <h1>In Memoriam</h1>
+  <p class="lede">I nomi delle donne uccise in Italia dal 2014 a oggi. Per ciascuna: data, luogo, una breve storia e la fonte da cui proviene.</p>
+  <nav class="links" aria-label="Sezioni">
+   <a href="#schede">Schede</a><a href="#progetto">Il progetto</a><a href="#metodo">Fonti e metodo</a>
+   <a href="in-memoriam-fascicolo.pdf">Fascicolo PDF</a><a href="data/schede.csv">Dati (CSV)</a><a href="data/schede.json">Dati (JSON)</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section id="progetto">
+ <div class="wrap project">
+  <h2>Il progetto</h2>
+  <p>Questo archivio sostiene <em>In Memoriam – Manifesto Visivo</em>, il progetto fotografico di Matteo Anatrella realizzato con il team di ANeMA Project. Nella performance, ogni donna che partecipa posa a terra, a occhi chiusi, stringendo un foglio con due date: la propria data di nascita e la data di morte di una vittima reale. Le fotografie, stampate sul momento, compongono un'opera collettiva contro il femminicidio.</p>
+  <p>Le schede qui raccolte servono a dare a ogni data un nome, un luogo e una storia. Il pulsante «Copia» su ogni scheda copia nome e data di morte, pronti per il foglio.</p>
+  <p class="meta">Sul progetto: <a href="https://www.pressenza.com/it/2025/05/in-memoriam-la-fotografia-contro-il-femminicidio/" rel="noopener">Pressenza, «In Memoriam: la fotografia contro il femminicidio» (maggio 2025)</a>.</p>
+ </div>
+</section>
+
+<section id="schede" aria-labelledby="schede-h">
+ <div class="filters">
+  <div class="wrap">
+   <h2 id="schede-h" class="sr">Schede</h2>
+   <form id="f" class="grid" role="search" onsubmit="return false">
+    <div><label for="q-name">Nome</label><input id="q-name" type="search" placeholder="Nome o cognome" autocomplete="off"></div>
+    <div><label for="q-place">Luogo</label><input id="q-place" type="search" placeholder="Comune o sigla provincia" autocomplete="off"></div>
+    <div><label for="q-region">Regione</label><select id="q-region"><option value="">Tutte</option></select></div>
+    <div><label for="q-year">Anno</label><select id="q-year"><option value="">Tutti</option></select></div>
+    <div><label for="q-from">Dal</label><input id="q-from" type="date" min="2014-01-01"></div>
+    <div><label for="q-to">Al</label><input id="q-to" type="date"></div>
+    <div><label for="q-rel">Relazione con l'autore</label><select id="q-rel"><option value="">Tutte</option></select></div>
+    <div><label for="q-text">Nella storia</label><input id="q-text" type="search" placeholder="Parola nel testo" autocomplete="off"></div>
+   </form>
+   <div class="bar">
+    <span id="count" aria-live="polite"></span>
+    <span>
+     <label for="q-sort" class="sr">Ordina</label>
+     <select id="q-sort" style="width:auto"><option value="desc">Più recenti prima</option><option value="asc">Meno recenti prima</option><option value="name">Per nome</option></select>
+     <button type="button" id="reset">Azzera filtri</button>
+    </span>
+   </div>
+  </div>
+ </div>
+ <div class="wrap">
+  <div id="results" class="results" aria-label="Risultati"></div>
+  <div id="empty" class="empty" hidden>Nessuna scheda corrisponde ai filtri.</div>
+  <div class="more"><button type="button" id="more" class="primary" hidden>Mostra altre schede</button></div>
+ </div>
+</section>
+
+<section id="metodo">
+ <div class="wrap method">
+  <h2>Fonti e metodo</h2>
+  <p>In Italia non esiste un registro ufficiale e nominativo dei femminicidi. Le schede seguono due fonti, citate su ogni scheda con il link.</p>
+  <ul>
+   <li><strong>2014–2024:</strong> gli elenchi annuali del gruppo di ricerca sul femicidio della <a href="https://femicidiocasadonne.wordpress.com/ricerche-pubblicazioni/" rel="noopener">Casa delle donne per non subire violenza di Bologna</a>, pubblicati con la Regione Emilia-Romagna e costruiti sulla cronaca nazionale e locale. Il criterio è ampio: donne uccise da uomini per motivi di genere, anche da figli, padri, fratelli, clienti o conoscenti, più alcuni suicidi che il rapporto collega alle violenze subite.</li>
+   <li><strong>2025–2026:</strong> gli elenchi di <a href="https://femminicidioitalia.info/" rel="noopener">FemminicidioItalia.info</a>, perché il rapporto della Casa delle donne su questi anni non è ancora disponibile in forma testuale. Il criterio è più ristretto: i numeri non vanno confrontati con quelli degli anni precedenti.</li>
+  </ul>
+  <p>Le storie sono sintesi riformulate e non riportano il nome degli autori, solo la relazione con la vittima. La voce «Relazione con l'autore» è ricavata automaticamente dalla sintesi e serve per filtrare, non come dato giudiziario. Le foto non sono incluse: sono quasi sempre immagini private riprese dai giornali, coperte da diritti; si trovano, quando ci sono, alla fonte.</p>
+  <p>L'estrazione è stata in parte automatica, controllata contro i totali di ciascun rapporto e verificata a campione sulla cronaca. Sono state tolte otto voci ripetute o con data errata. Restano possibili errori su date, località o grafia: in caso di dubbio fa fede la fonte collegata.</p>
+  <table class="years" id="years"><thead><tr><th>Anno</th><th>Schede</th><th>Fonte</th></tr></thead><tbody></tbody></table>
+  <h3 class="sans" style="font-size:1rem">Rapporti annuali</h3>
+  <ul id="sources" class="meta"></ul>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">In Memoriam · schede aggiornate al 21 novembre 2026 · i dati sono liberamente scaricabili in <a href="data/schede.csv">CSV</a> e <a href="data/schede.json">JSON</a>.</div>
+</footer>
+
+<script>
+(function(){
+ const $ = s => document.querySelector(s);
+ const PAGE = 60;
+ let all = [], view = [], shown = 0;
+ const norm = s => (s||'').toString().normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+ const esc = s => (s||'').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+ fetch('data/schede.json').then(r => r.json()).then(d => {
+  all = d.records.map(r => Object.assign(r, {_n: norm(r.name), _p: norm(r.place + ' ' + r.prov), _s: norm(r.story)}));
+  fill('#q-region', [...new Set(all.map(r => r.region).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it')));
+  fill('#q-year', [...new Set(all.map(r => r.year))].sort((a,b)=>b-a));
+  fill('#q-rel', [...new Set(all.map(r => r.relation))].sort((a,b)=>a.localeCompare(b,'it')));
+  $('#q-to').max = new Date().toISOString().slice(0,10);
+  method(d);
+  readHash(); apply();
+ }).catch(() => { $('#count').textContent = 'Impossibile caricare le schede.'; });
+
+ function fill(sel, vals){ const el = $(sel); vals.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; el.appendChild(o); }); }
+
+ const ids = ['q-name','q-place','q-region','q-year','q-from','q-to','q-rel','q-text','q-sort'];
+ ids.forEach(id => { const el = document.getElementById(id); el.addEventListener(el.tagName === 'SELECT' || el.type === 'date' ? 'change' : 'input', () => { apply(); writeHash(); }); });
+ $('#reset').addEventListener('click', () => { ids.forEach(id => { const el = document.getElementById(id); el.value = id === 'q-sort' ? 'desc' : ''; }); apply(); writeHash(); });
+ $('#more').addEventListener('click', () => render(false));
+
+ function apply(){
+  const n = norm($('#q-name').value.trim()), p = norm($('#q-place').value.trim()), t = norm($('#q-text').value.trim());
+  const reg = $('#q-region').value, yr = $('#q-year').value, rel = $('#q-rel').value, from = $('#q-from').value, to = $('#q-to').value, sort = $('#q-sort').value;
+  view = all.filter(r => (!n || r._n.includes(n)) && (!p || r._p.includes(p)) && (!t || r._s.includes(t)) &&
+   (!reg || r.region === reg) && (!yr || String(r.year) === yr) && (!rel || r.relation === rel) &&
+   (!from || (r.date && r.date >= from)) && (!to || (r.date && r.date <= to)));
+  if (sort === 'name') view.sort((a,b) => a.name.localeCompare(b.name,'it'));
+  else view.sort((a,b) => (sort === 'asc' ? 1 : -1) * ((a.date||'').localeCompare(b.date||'') || a.n - b.n));
+  $('#count').textContent = view.length === 1 ? '1 scheda' : view.length.toLocaleString('it-IT') + ' schede';
+  render(true);
+ }
+
+ function render(reset){
+  const box = $('#results');
+  if (reset){ box.innerHTML = ''; shown = 0; }
+  const frag = document.createDocumentFragment();
+  view.slice(shown, shown + PAGE).forEach(r => frag.appendChild(card(r)));
+  box.appendChild(frag); shown = Math.min(shown + PAGE, view.length);
+  $('#more').hidden = shown >= view.length; $('#empty').hidden = view.length > 0;
+ }
+
+ function card(r){
+  const el = document.createElement('article'); el.className = 'card'; el.id = r.id;
+  const place = (r.place || 'luogo non indicato') + (r.prov ? ' (' + r.prov + ')' : '') + (r.region ? ' · ' + r.region : '');
+  const srcLabel = r.year >= 2025 ? 'FemminicidioItalia.info, scheda della vittima' : 'Casa delle donne per non subire violenza di Bologna, rapporto sul ' + r.year;
+  el.innerHTML = '<h3>' + esc(r.name) + '</h3>' +
+   '<div class="meta">' + (r.age ? esc(r.age) + ' anni · ' : '') + esc(r.date_it) + ' · ' + esc(place) + '</div>' +
+   '<p class="story' + (r.story_missing ? ' missing' : '') + '">' + esc(r.story) + '</p>' +
+   '<div class="tags"><span class="tag">' + esc(r.relation) + '</span></div>' +
+   '<div class="src"><span>Fonte: <a href="' + esc(r.src_url) + '" target="_blank" rel="noopener">' + esc(srcLabel) + '</a></span>' +
+   '<button type="button" class="copy" aria-label="Copia nome e data di ' + esc(r.name) + '">Copia</button></div>';
+  el.querySelector('.copy').addEventListener('click', e => {
+   const txt = r.name + ' — ' + r.date_it;
+   const done = () => { e.target.textContent = 'Copiato'; setTimeout(() => e.target.textContent = 'Copia', 1500); };
+   if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, () => prompt('Copia:', txt)); else prompt('Copia:', txt);
+  });
+  return el;
+ }
+
+ function writeHash(){
+  const q = new URLSearchParams();
+  ids.forEach(id => { const v = document.getElementById(id).value; if (v && !(id === 'q-sort' && v === 'desc')) q.set(id.slice(2), v); });
+  history.replaceState(null, '', q.toString() ? '#' + q.toString() : location.pathname);
+ }
+ function readHash(){
+  if (!location.hash || location.hash.length < 2 || !location.hash.includes('=')) return;
+  const q = new URLSearchParams(location.hash.slice(1));
+  ids.forEach(id => { const v = q.get(id.slice(2)); if (v !== null) document.getElementById(id).value = v; });
+ }
+
+ function method(d){
+  const counts = {}; const srcs = {};
+  d.records.forEach(r => { counts[r.year] = (counts[r.year]||0) + 1; if (r.year <= 2024) srcs[r.year] = [r.src_title, r.src_url]; });
+  const tb = $('#years tbody');
+  Object.keys(counts).sort().forEach(y => { const tr = document.createElement('tr');
+   tr.innerHTML = '<td>' + y + '</td><td>' + counts[y] + '</td><td>' + (y <= 2024 ? 'Casa delle donne, Bologna' : 'FemminicidioItalia.info') + '</td>'; tb.appendChild(tr); });
+  const ul = $('#sources');
+  Object.keys(srcs).sort().forEach(y => { const li = document.createElement('li');
+   li.innerHTML = y + ' — ' + esc(srcs[y][0]) + '. <a href="' + esc(srcs[y][1]) + '" target="_blank" rel="noopener">Rapporto (PDF)</a>'; ul.appendChild(li); });
+  const li = document.createElement('li');
+  li.innerHTML = '2025–2026 — FemminicidioItalia.info: <a href="https://femminicidioitalia.info/lista/2025" target="_blank" rel="noopener">elenco 2025</a>, <a href="https://femminicidioitalia.info/lista/2026" target="_blank" rel="noopener">elenco 2026</a>.';
+  ul.appendChild(li);
+ }
+})();
+</script>
+</body>
+</html>
