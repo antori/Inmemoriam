@@ -95,7 +95,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
 <header class="top">
  <div class="wrap">
   <h1>In Memoriam</h1>
-  <p class="lede">I nomi delle donne uccise in Italia dal 2014 a oggi. Per ciascuna: data, luogo, una breve storia, la fonte da cui proviene e un articolo di cronaca.</p>
+  <p class="lede">I nomi delle donne uccise in Italia dal 2014 a oggi. Per ciascuna: data, luogo, una breve storia, la fonte da cui proviene e, quando c'è, un articolo di cronaca.</p>
   <nav class="links" aria-label="Sezioni">
    <a href="#schede">Schede</a><a href="#progetto">Il progetto</a><a href="#metodo">Fonti e metodo</a>
    <a href="in-memoriam-fascicolo.pdf">Fascicolo PDF</a><a href="data/schede.csv">Dati (CSV)</a><a href="data/schede.json">Dati (JSON)</a>
@@ -154,7 +154,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
    <li><strong>2014–2024:</strong> gli elenchi annuali del gruppo di ricerca sul femicidio della <a href="https://femicidiocasadonne.wordpress.com/ricerche-pubblicazioni/" rel="noopener">Casa delle donne per non subire violenza di Bologna</a>, pubblicati con la Regione Emilia-Romagna e costruiti sulla cronaca nazionale e locale. Il criterio è ampio: donne uccise da uomini per motivi di genere, anche da figli, padri, fratelli, clienti o conoscenti, più alcuni suicidi che il rapporto collega alle violenze subite.</li>
    <li><strong>2025–2026:</strong> gli elenchi di <a href="https://femminicidioitalia.info/" rel="noopener">FemminicidioItalia.info</a>, perché il rapporto della Casa delle donne su questi anni non è ancora disponibile in forma testuale. Il criterio è più ristretto: i numeri non vanno confrontati con quelli degli anni precedenti.</li>
   </ul>
-  <p>Le storie sono sintesi riformulate e non riportano il nome degli autori, solo la relazione con la vittima. La voce «Relazione con l'autore» è ricavata automaticamente dalla sintesi e serve per filtrare, non come dato giudiziario. Le foto non sono incluse: sono quasi sempre immagini private riprese dai giornali, coperte da diritti; si trovano, quando ci sono, alla fonte.</p>
+  <p>Le storie sono sintesi riformulate e non riportano il nome degli autori, solo la relazione con la vittima. Per lo stesso motivo il collegamento alla cronaca indica solo la testata, non il titolo dell'articolo. La voce «Relazione con l'autore» è ricavata automaticamente dalla sintesi e serve per filtrare, non come dato giudiziario. Le foto non sono incluse: sono quasi sempre immagini private riprese dai giornali, coperte da diritti; si trovano, quando ci sono, alla fonte.</p>
   <p>Ogni scheda è stata confrontata voce per voce con il rapporto originale e verificata su un articolo di cronaca, collegato sotto la fonte quando è stato trovato. Restano possibili errori su date, località o grafia: in caso di dubbio fanno fede le fonti collegate.</p>
   <table class="years" id="years"><thead><tr><th>Anno</th><th>Schede</th><th>Fonte</th></tr></thead><tbody></tbody></table>
   <h3 class="sans" style="font-size:1rem">Rapporti annuali</h3>
@@ -238,7 +238,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font:13px/1.5 system
    '<p class="story' + (r.story_missing ? ' missing' : '') + '">' + esc(r.story) + '</p>' +
    '<div class="tags"><span class="tag">' + esc(r.relation) + '</span></div>' +
    '<div class="src"><span>Fonte: <a href="' + esc(r.src_url) + '" target="_blank" rel="noopener">' + esc(srcLabel) + '</a>' +
-   (r.news_url ? '<br>Cronaca: <a href="' + esc(r.news_url) + '" target="_blank" rel="noopener">' + esc(r.news_outlet || 'articolo') + (r.news_title ? ' — ' + esc(r.news_title) : '') + '</a>' : '') +
+   (r.news_url ? '<br>Cronaca: <a href="' + esc(r.news_url) + '" target="_blank" rel="noopener">' + esc(r.news_outlet || 'articolo') + '</a>' : '') +
    '</span><button type="button" class="copy" aria-label="Copia nome e data di ' + esc(r.name) + '">Copia</button></div>';
   el.querySelector('.copy').addEventListener('click', e => {
    const txt = r.name + ' — ' + r.date_it;
